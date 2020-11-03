@@ -1,35 +1,64 @@
 import xlsxwriter
 import datetime
 import Settings as s
-import Joint
+from Joint import joint
 # from openpyxl import Workbook
 
 
-def create_workbook():
+def create_workbook(self):
     current_time = datetime.datetime.now()
     worksheet_name = str(current_time.day) + "." + str(current_time.month) + " " + str(current_time.hour) + "." + \
                      str(current_time.minute) + "." + str(current_time.second) + ".xlsx"
     s.excel_workbook = xlsxwriter.Workbook(worksheet_name)
     s.ex_list = []
 
-def wf_joints(ex_name, list_joints):
+def wf_joints(self, ex_name, list_joints):
+    '''
+    Writing joints data for an exercise in Excel file in two versions
+    :param self:
+    :param ex_name:
+    :param list_joints:
+    :return:
+    '''
     current_time = datetime.datetime.now()
     name = ex_name + str(current_time.minute) + str(current_time.second)
     s.worksheet = s.excel_workbook.add_worksheet(name)
-    row = 1
-    for j in list_joints:
-        if type(j) is Joint:
-            j_ar = j.joint_to_array()
-            # print("it's joint")
-        else:
-            # print(type(j))
-            j_ar = j
-        for i in range (len(j_ar)):
-            s.worksheet.write(row, i, str(j_ar[i]))
-        row += 1
+    frame_number = 1
+
+    for l in range(1, len(list_joints)):
+        row = 1
+        s.worksheet.write(0, frame_number, frame_number)
+        for j in list_joints[l]:
+            if type(j) == joint:
+                j_ar = j.joint_to_array()
+                for i in range(len(j_ar)):
+                    s.worksheet.write(row, frame_number, str(j_ar[i]))
+                    row += 1
+            else:
+                s.worksheet.write(row, frame_number, j)
+                row += 1
+        frame_number += 1
+
+    name2 = ex_name + "v2" + str(current_time.minute) + str(current_time.second)
+    s.worksheet = s.excel_workbook.add_worksheet(name2)
+    row = 0
+    frame_number = 0
+    for l in range(1, len(list_joints)):
+        for j in list_joints[l]:
+            if type(j) == joint:
+                j_ar = j.joint_to_array()
+                s.worksheet.write(row, 0, frame_number)
+                for i in range(len(j_ar)):
+                    s.worksheet.write(row, i + 1, str(j_ar[i]))
+                row += 1
+            else:
+                s.worksheet.write(row-1, i + 2,j)
+        frame_number += 1
+
+    self.close_workbook()
 
 #write to execl file exercises names and the successful repetition number
-def wf_exercise():
+def wf_exercise(self):
     row = 1
     col = 0
     s.worksheet = s.excel_workbook.add_worksheet("success")
@@ -38,7 +67,7 @@ def wf_exercise():
         s.worksheet.write(row, col+1, ex[1])
         row += 1
 
-def close_workbook():
+def close_workbook(self):
     s.excel_workbook.close()
 
 if __name__ == "__main__":

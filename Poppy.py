@@ -178,7 +178,6 @@ class Poppy(threading.Thread):
         s.str_to_say = 'goodbye'
         time.sleep(5)
         Excel.wf_exercise()
-        Excel.close_workbook()
         for m in self.poppy.motors:  # need to be initialized for the real robot. False=stiff, True=loose
             m.compliant = True
         s.finish_workout = True
