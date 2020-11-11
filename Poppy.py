@@ -96,7 +96,7 @@ class Poppy(threading.Thread):
     def test_for_exercise(self):
     # For testing exercises separtly, not as part of the workout
 
-        # self.run_exercise(self.raise_arms_horizontally, "raise arms horizontally")
+        self.run_exercise(self.raise_arms_horizontally, "raise arms horizontally")
         # self.run_exercise(self.bend_elbows, "bend elbows")
         # self.run_exercise(self.raise_arms_forward_separate, "")
         # self.run_exercise(self.raise_arms_forward, "raise arms forward")
@@ -107,12 +107,13 @@ class Poppy(threading.Thread):
         # self.run_exercise(self.raise_arms_horiz_turn, "raise arms horizontally turn hands")
         # self.run_exercise(self.open_arms_and_move_forward, "open arms and move forward")
         # self.run_exercise(self.open_and_close_arms_90, "open and close arms 90")
-        self.run_exercise(self.raise_arms_90_and_up, "raise arms 90 and up")
+        # self.run_exercise(self.raise_arms_90_and_up, "raise arms 90 and up")
         # # self.run_exercise(self.open_hands_and_raise_up, "raise arms forward")
 
 
         # self.run_exercise(self.raise_arms_and_lean, "")
         # self.run_exercise_and_repeat(self.raise_hands_and_fold_backward, "")
+
         self.finish_workout()
 
 

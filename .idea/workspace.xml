@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7a815fb4-af55-422a-924e-db34461a37ff" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/Camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Poppy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Poppy.py" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/venv/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,78 +14,6 @@
   <component name="FavoritesManager">
     <favorites_list name="Maya" />
   </component>
-  <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4268585">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/PythonTestFiles/Server.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#0#13#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Realsense.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-                  <folding>
-                    <element signature="e#0#20#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Excel.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#0#17#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Poppy.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="157">
-                  <caret line="193" column="25" lean-forward="true" selection-start-line="193" selection-start-column="25" selection-end-line="193" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#0#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Camera_Cubemos.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="199" column="32" selection-start-line="199" selection-start-column="32" selection-end-line="199" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#0#20#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -93,40 +21,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>wf_exercise</find>
-      <find>err</find>
-      <find>joint1</find>
-      <find>Excel</find>
-      <find>print</find>
-      <find>type</find>
-      <find>close_wo</find>
-      <find>excel</find>
-      <find>wf_joints</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Server.py" />
-        <option value="$PROJECT_DIR$/Camera_Cubemos.py" />
-        <option value="$PROJECT_DIR$/Excel.py" />
-        <option value="$PROJECT_DIR$/Camera_Nuitrack.py" />
-        <option value="$PROJECT_DIR$/Camera.py" />
-        <option value="$PROJECT_DIR$/CognitiveGame1.py" />
-        <option value="$PROJECT_DIR$/CognitiveGame2.py" />
-        <option value="$PROJECT_DIR$/Main.py" />
-        <option value="$USER_HOME$/Desktop/‏‏תיקיה חדשה/Main.py" />
-        <option value="$PROJECT_DIR$/Poppy.py" />
-        <option value="$USER_HOME$/Desktop/‏‏תיקיה חדשה/Poppy.py" />
-        <option value="$PROJECT_DIR$/Realsense.py" />
-        <option value="$USER_HOME$/Desktop/‏‏תיקיה חדשה/Realsense.py" />
-      </list>
-    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="2423" />
@@ -136,25 +32,6 @@
   </component>
   <component name="ProjectId" id="1TEpMNBp5yZqIT66eooUHnOMPQC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Maya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Maya" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -163,7 +40,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/‏‏תיקיה חדשה/tts.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/Desktop/‏‏תיקיה חדשה/tts.py" />
@@ -184,19 +61,7 @@
       <recent name="C:\Users\mayak\PycharmProjects\Maya\Pictures" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.Camera_Nuitrack">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="Camera_Cubemos" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Maya" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -239,7 +104,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Excel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Maya" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -251,7 +116,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Excel.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -304,18 +169,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.Camera_Cubemos" />
-      <item itemvalue="Python.Excel" />
       <item itemvalue="Python.Realsense" />
       <item itemvalue="Python.Server" />
       <item itemvalue="Python.Camera_Nuitrack" />
+      <item itemvalue="Python.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Main" />
         <item itemvalue="Python.Camera_Nuitrack" />
         <item itemvalue="Python.Camera_Cubemos" />
         <item itemvalue="Python.Server" />
         <item itemvalue="Python.Realsense" />
-        <item itemvalue="Python.Excel" />
       </list>
     </recent_temporary>
   </component>
@@ -353,62 +218,39 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12118019" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3716143" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3066089" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32936078" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592653982913">
-      <screen x="0" y="0" width="1024" height="560" />
-    </state>
-    <state x="0" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1024.560@0.0.1024.560" timestamp="1592653982913" />
     <state x="233" y="89" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596988024262">
       <screen x="0" y="0" width="1024" height="560" />
     </state>
     <state x="233" y="89" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1024.560@0.0.1024.560" timestamp="1596988024262" />
+    <state x="159" y="0" key="CommitChangelistDialog2" timestamp="1605100221966">
+      <screen x="0" y="0" width="1024" height="600" />
+    </state>
+    <state x="159" y="0" key="CommitChangelistDialog2/0.0.1024.600@0.0.1024.600" timestamp="1605100221966" />
     <state x="292" y="37" key="FileChooserDialogImpl" timestamp="1596985190790">
       <screen x="0" y="0" width="1024" height="560" />
     </state>
     <state x="292" y="37" key="FileChooserDialogImpl/0.0.1024.560@0.0.1024.560" timestamp="1596985190790" />
-    <state width="1003" height="27" key="GridCell.Tab.0.bottom" timestamp="1597229740954">
-      <screen x="0" y="0" width="1024" height="560" />
+    <state width="1003" height="81" key="GridCell.Tab.0.bottom" timestamp="1605101502093">
+      <screen x="0" y="0" width="1024" height="600" />
     </state>
     <state width="1003" height="27" key="GridCell.Tab.0.bottom/0.0.1024.560@0.0.1024.560" timestamp="1597229740954" />
-    <state width="1003" height="8" key="GridCell.Tab.0.bottom/0.0.1024.600@0.0.1024.600" timestamp="1589114445904" />
-    <state width="1003" height="27" key="GridCell.Tab.0.center" timestamp="1597229740954">
-      <screen x="0" y="0" width="1024" height="560" />
+    <state width="1003" height="81" key="GridCell.Tab.0.bottom/0.0.1024.600@0.0.1024.600" timestamp="1605101502093" />
+    <state width="1003" height="81" key="GridCell.Tab.0.center" timestamp="1605101502093">
+      <screen x="0" y="0" width="1024" height="600" />
     </state>
     <state width="1003" height="27" key="GridCell.Tab.0.center/0.0.1024.560@0.0.1024.560" timestamp="1597229740954" />
-    <state width="1003" height="8" key="GridCell.Tab.0.center/0.0.1024.600@0.0.1024.600" timestamp="1589114445904" />
-    <state width="1003" height="27" key="GridCell.Tab.0.left" timestamp="1597229740954">
-      <screen x="0" y="0" width="1024" height="560" />
+    <state width="1003" height="81" key="GridCell.Tab.0.center/0.0.1024.600@0.0.1024.600" timestamp="1605101502093" />
+    <state width="1003" height="81" key="GridCell.Tab.0.left" timestamp="1605101502093">
+      <screen x="0" y="0" width="1024" height="600" />
     </state>
     <state width="1003" height="27" key="GridCell.Tab.0.left/0.0.1024.560@0.0.1024.560" timestamp="1597229740954" />
-    <state width="1003" height="8" key="GridCell.Tab.0.left/0.0.1024.600@0.0.1024.600" timestamp="1589114445903" />
-    <state width="1003" height="27" key="GridCell.Tab.0.right" timestamp="1597229740954">
-      <screen x="0" y="0" width="1024" height="560" />
+    <state width="1003" height="81" key="GridCell.Tab.0.left/0.0.1024.600@0.0.1024.600" timestamp="1605101502093" />
+    <state width="1003" height="81" key="GridCell.Tab.0.right" timestamp="1605101502093">
+      <screen x="0" y="0" width="1024" height="600" />
     </state>
     <state width="1003" height="27" key="GridCell.Tab.0.right/0.0.1024.560@0.0.1024.560" timestamp="1597229740954" />
-    <state width="1003" height="8" key="GridCell.Tab.0.right/0.0.1024.600@0.0.1024.600" timestamp="1589114445904" />
+    <state width="1003" height="81" key="GridCell.Tab.0.right/0.0.1024.600@0.0.1024.600" timestamp="1605101502093" />
     <state width="1003" height="156" key="GridCell.Tab.1.bottom" timestamp="1597170815505">
       <screen x="0" y="0" width="1024" height="560" />
     </state>
@@ -425,14 +267,6 @@
       <screen x="0" y="0" width="1024" height="560" />
     </state>
     <state width="1003" height="156" key="GridCell.Tab.1.right/0.0.1024.560@0.0.1024.560" timestamp="1597170815505" />
-    <state x="15" y="0" key="SettingsEditor" timestamp="1595597998362">
-      <screen x="0" y="0" width="1024" height="560" />
-    </state>
-    <state x="15" y="0" key="SettingsEditor/0.0.1024.560@0.0.1024.560" timestamp="1595597998362" />
-    <state x="175" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1591454488614">
-      <screen x="0" y="0" width="1024" height="560" />
-    </state>
-    <state x="175" y="-1" width="672" height="678" key="search.everywhere.popup/0.0.1024.560@0.0.1024.560" timestamp="1591454488614" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -451,119 +285,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Anaconda2/envs/python_test/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="716" column="8" selection-start-line="716" selection-start-column="8" selection-end-line="716" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda2/envs/python_test/Lib/site-packages/xlsxwriter/workbook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="179" selection-start-line="179" selection-end-line="179" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda2/envs/python_test/Lib/site-packages/xlsxwriter/worksheet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" lean-forward="true" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Joint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PythonTestFiles/Server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Realsense.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="268" column="30" selection-start-line="268" selection-start-column="30" selection-end-line="268" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Camera_Nuitrack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Camera_Cubemos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="199" column="32" selection-start-line="199" selection-start-column="32" selection-end-line="199" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Poppy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="193" column="25" lean-forward="true" selection-start-line="193" selection-start-column="25" selection-end-line="193" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Excel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

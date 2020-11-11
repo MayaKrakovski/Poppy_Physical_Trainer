@@ -141,7 +141,8 @@ class Camera(threading.Thread):
                 s.req_exercise = ""
                 return True
 
-    def exercise_three_joints(self, exercise_name, joint_num1, joint_num2, joint_num3): #TODO add depth check
+    def exercise_three_joints(self, exercise_name, joint_num1, joint_num2, joint_num3,up_lb,
+                            up_ub, down_lb, down_ub): #TODO add depth check
         flag = False
         counter = 0
         list_joints = [[joint_num1, joint_num2, joint_num3]]
@@ -158,11 +159,11 @@ class Camera(threading.Thread):
                 list_joints.append([joint1[i], joint2[i], joint3[i]])
                 angle = self.calc_angle(joint2[i], joint3[i], joint1[i])
                 print (angle)
-                if ((100<angle<120) & (not flag)):
+                if ((up_lb<angle<up_ub) & (not flag)):
                     print("up")
                     counter = self.counting_flag(counter)
                     flag = True
-                if ((angle<55) & (flag)):
+                if ((down_lb<angle<down_ub) & (flag)):
                     print("down")
                     flag = False
                     print (counter)
@@ -177,7 +178,8 @@ class Camera(threading.Thread):
         if (s.success_exercise):
             return True
 
-    def exercise_six_joints(self, exercise_name, joint_r1, joint_r2, joint_r3, joint_l1, joint_l2, joint_l3, up_lb, up_ub, down_lb, down_ub): #TODO add depth check
+    def exercise_six_joints(self, exercise_name, joint_r1, joint_r2, joint_r3, joint_l1, joint_l2, joint_l3, up_lb,
+                            up_ub, down_lb, down_ub): #TODO add depth check
         flag = False
         counter = 0
         list_joints = [[joint_r1, joint_r2, joint_r3, joint_l1, joint_l2, joint_l3]]
@@ -192,25 +194,28 @@ class Camera(threading.Thread):
             if not jointr1 or not jointr2 or not jointr3 or not jointl1 or not jointl2 or not jointl3:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i]])
                 right_angle = self.calc_angle(jointr2[i], jointr3[i], jointr1[i])
                 left_angle = self.calc_angle(jointl2[i], jointl3[i], jointl1[i])
+                new_entry = [jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i], right_angle,
+                             left_angle]
                 print (right_angle)
                 print (left_angle)
                 if ((up_lb<right_angle<up_ub) & (up_lb<left_angle<up_ub) & (not flag)):
                     print("up")
                     counter = self.counting_flag(counter)
                     flag = True
+                    new_entry.append("up")
                 if ((down_lb<right_angle<down_ub) & (down_lb<left_angle<down_ub) & (flag)):
                     print("down")
                     flag = False
+                    new_entry.append("down")
                     print (counter)
                 if (counter == s.rep):
                     s.req_exercise = ""
                     s.success_exercise = True
                     break
+                list_joints.append(new_entry)
         print ("finish with" + str(counter))
-        print(list_joints)
         Excel.wf_joints(exercise_name,list_joints)
         s.ex_list.append([exercise_name, counter])
         if (s.success_exercise):
@@ -221,13 +226,13 @@ class Camera(threading.Thread):
             continue
 
     def raise_right_arm_horiz(self):
-        self.exercise_three_joints("raise_right_arm_horiz", "3", "12", "13")
+        self.exercise_three_joints("raise_right_arm_horiz", "3", "12", "13",  90, 120, 30, 45)
 
     def raise_left_arm_horiz(self):
-        self.exercise_three_joints("raise_left_arm_horiz", "3", "6", "7")
+        self.exercise_three_joints("raise_left_arm_horiz", "3", "6", "7", 90, 120, 30, 45)
 
     def raise_arms_horizontally(self):
-        self.exercise_six_joints("raise_arms_horizontally","3", "12", "13", "3", "6", "7", 100, 120, 0, 45)
+        self.exercise_six_joints("raise_arms_horizontally","3", "12", "13", "3", "6", "7", 90, 120, 30, 45)
 
     def bend_elbows(self):
         self.exercise_six_joints("bend_elbows", "12", "13", "15", "6", "7", "9", 0, 10, 165, 180)
