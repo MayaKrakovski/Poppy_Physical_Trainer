@@ -3,19 +3,18 @@ import datetime
 import Settings as s
 from Joint import joint
 # from openpyxl import Workbook
-# TODO make sure it works in poppy
 
-def create_workbook(self):
+
+def create_workbook():
     current_time = datetime.datetime.now()
     worksheet_name = str(current_time.day) + "." + str(current_time.month) + " " + str(current_time.hour) + "." + \
                      str(current_time.minute) + "." + str(current_time.second) + ".xlsx"
     s.excel_workbook = xlsxwriter.Workbook(worksheet_name)
     s.ex_list = []
 
-def wf_joints(self, ex_name, list_joints):
+def wf_joints(ex_name, list_joints):
     '''
     Writing joints data for an exercise in Excel file in two versions
-    :param self:
     :param ex_name:
     :param list_joints:
     :return:
@@ -55,10 +54,8 @@ def wf_joints(self, ex_name, list_joints):
                 s.worksheet.write(row-1, i + 2,j)
         frame_number += 1
 
-    self.close_workbook()
-
 #write to execl file exercises names and the successful repetition number
-def wf_exercise(self):
+def wf_exercise():
     row = 1
     col = 0
     s.worksheet = s.excel_workbook.add_worksheet("success")
@@ -67,7 +64,7 @@ def wf_exercise(self):
         s.worksheet.write(row, col+1, ex[1])
         row += 1
 
-def close_workbook(self):
+def close_workbook():
     s.excel_workbook.close()
 
 if __name__ == "__main__":
