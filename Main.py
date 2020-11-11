@@ -8,11 +8,13 @@ from GUI2 import Screen, FullScreenApp
 from PIL import Image, ImageTk
 import Excel as excel
 
+
+
 if __name__ == '__main__':
-    s.with_cog = True
     # Settings for exercises
     language = 'Hebrew'
     gender = 'Female'
+    s.with_cog = True # Depnding on experiment scenario
     s.audio_path = 'audio files/' + language + '/' + gender + '/'
 
     s.exercies_amount = 6

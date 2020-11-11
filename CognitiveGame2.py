@@ -59,7 +59,7 @@ class Game2PageOne(tk.Frame):
         cory = 150
 
         for i in range(square_length*square_length):
-            label = tk.Label(self.background_label, font=("Ariel", 40), bg="gray")
+            label = tk.Label(font=("Ariel", 40), bg="gray")
             label.pack()
             label.place(height=60, width=60, x=corx, y=cory)
             corx = corx - 70

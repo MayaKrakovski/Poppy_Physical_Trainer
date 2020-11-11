@@ -153,7 +153,7 @@ class GamePageTwo(tk.Frame):
         else:
             self.labels[but2].configure(bg="red")
             self.after(1500, self.changeColor2, but2)
-            s.str_to_say = "GAME OVER"
+            s.str_to_say = ""
             self.update()
             time.sleep(1.5)
             print ("bad")

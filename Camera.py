@@ -31,6 +31,9 @@ class Camera(threading.Thread):
     def stopRealsense(self):
         rStop = Realsense()
         rStop.stop()
+        # clear received data
+        while self.getSkeletonData() is not None:
+            continue
 
     # Client - read messages
     def getSkeletonData(self):
@@ -50,6 +53,8 @@ class Camera(threading.Thread):
             return joints
         except socket.timeout:  # fail after 1 second of no activity
             print("Didn't receive data! [Timeout]")
+            # TODO Maybe add a meesage to the user that the camera don't recieve data?
+            return None
 
     # input - joint data list ; output - joint object
     def createJoint(self, jointList):
@@ -58,6 +63,7 @@ class Camera(threading.Thread):
             return new_joint
         except:
             print("could not create new joint: list index out of range")
+            # TODO Maybe add a meesage to the user that the camera don't recognize joint?
             return None
 
     # input - all joints data, required joint number ; output - data of the required joint only
@@ -141,6 +147,8 @@ class Camera(threading.Thread):
         list_joints = [[joint_num1, joint_num2, joint_num3]]
         while (s.req_exercise == exercise_name):
             joints = self.getSkeletonData()
+            ''' TODO the if condition of not joint1 or not joint2 or not joint3 can be change to the length of joints
+            or sending a messeage to the user that one of the joints was not recognize'''
             joint1 = self.findJointData(joints, joint_num1)
             joint2 = self.findJointData(joints, joint_num2)
             joint3 = self.findJointData(joints, joint_num3)
@@ -251,10 +259,10 @@ class Camera(threading.Thread):
                     up_time_counter = up_time_counter + (time.time() - last_time)
                     if (up_time_counter>count):
                         count = self.counting_flag(count)
-                        up_time_counter = up_time_counter - 1
+                        up_time_counter = up_time_counter - 0.9
                     print (up_time_counter)
                     # last_time = time.time()
-                if (up_time_counter >= s.rep):
+                if (up_time_counter >= s.rep-1):
                     s.req_exercise = ""
                     s.success_exercise = True
                     break
@@ -290,7 +298,7 @@ class Camera(threading.Thread):
                 print (right_angle)
                 print (right_depth)
                 print (flag)
-                if (right_height < 70.0) &  (right_depth>300) & (not flag):
+                if (right_height < 80.0) &  (right_depth>300) & (not flag):
                     print ("up")
                     counter = self.counting_flag(counter)
                     flag = True
@@ -325,7 +333,7 @@ class Camera(threading.Thread):
                 left_height = abs(jointl1[i].y - jointl3[i].y)
                 left_angle = self.calc_angle(jointl2[i], jointl1[i], jointl3[i])
                 left_depth = abs(jointl1[i].z - jointl3[i].z)
-                if (left_height < 70.0) & (left_depth>300) & (not flag):
+                if (left_height < 80.0) & (left_depth>300) & (not flag):
                     print ("up")
                     counter = self.counting_flag(counter)
                     flag = True

@@ -34,8 +34,8 @@ class Poppy(threading.Thread):
         s.str_to_say='lets start'
         time.sleep(2)
         chosen_exercises, cog_screen_name = self.choose_exercises_and_game()
-        # self.run_workout(chosen_exercises, cog_screen_name)
-        self.test_for_exercise()
+        # self.run_workout(chosen_exercises, cog_screen_name) #Running function
+        self.test_for_exercise() #Testing function
 
 
     def choose_exercises_and_game(self):
@@ -178,8 +178,9 @@ class Poppy(threading.Thread):
         s.str_to_say = 'goodbye'
         time.sleep(5)
         Excel.wf_exercise()
-        for m in self.poppy.motors:  # need to be initialized for the real robot. False=stiff, True=loose
-            m.compliant = True
+        Excel.close_workbook()
+        # for m in self.poppy.motors:  # need to be initialized for the real robot. False=stiff, True=loose
+        #   m.compliant = True
         s.finish_workout = True
         s.screen.quit()
         print ("finish workout")
@@ -354,12 +355,12 @@ class Poppy(threading.Thread):
             self.poppy.l_shoulder_x.goto_position(90, 1, wait=False)
             self.poppy.r_elbow_y.goto_position(0, 1.5, wait=False)
             self.poppy.l_elbow_y.goto_position(0, 1.5, wait=True)
-            time.sleep(2)
+            time.sleep(1)
             self.poppy.r_shoulder_x.goto_position(-150, 1, wait=False)
             self.poppy.l_shoulder_x.goto_position(150, 1, wait=False)
             self.poppy.r_elbow_y.goto_position(60, 1.5, wait=False)
             self.poppy.l_elbow_y.goto_position(60, 1.5, wait=True)
-            time.sleep(2)
+            time.sleep(1)
 
     # EX10 raise arms and lean
     @func_attributes(number=10, amount=2, instructions="raise arms and lean")
@@ -499,4 +500,3 @@ class Poppy(threading.Thread):
 
 
     # if __name__ == '__main__':
-786
