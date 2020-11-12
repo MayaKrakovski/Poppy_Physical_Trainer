@@ -156,21 +156,24 @@ class Camera(threading.Thread):
             if not joint1 or not joint2 or not joint3:
                 continue
             for i in range(0, len(joint1)):
-                list_joints.append([joint1[i], joint2[i], joint3[i]])
                 angle = self.calc_angle(joint2[i], joint3[i], joint1[i])
+                new_entry = ([joint1[i], joint2[i], joint3[i]], angle)
                 print (angle)
                 if ((up_lb<angle<up_ub) & (not flag)):
                     print("up")
                     counter = self.counting_flag(counter)
                     flag = True
+                    new_entry.append("up")
                 if ((down_lb<angle<down_ub) & (flag)):
                     print("down")
                     flag = False
                     print (counter)
+                    new_entry.append("down")
                 if (counter == s.rep):
                     s.req_exercise = ""
                     s.success_exercise = True
                     break
+                list_joints.append(new_entry)
         print ("finish with" + str(counter))
         print(list_joints)
         Excel.wf_joints(exercise_name,list_joints)
@@ -255,16 +258,18 @@ class Camera(threading.Thread):
             if not jointr1 or not jointr2 or not jointr3 or not jointl1 or not jointl2 or not jointl3:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i]])
                 right_height = abs(jointr1[i].y - jointr3[i].y)
                 left_height = abs(jointl1[i].y - jointl3[i].y)
-                print (right_height)
-                print (left_height)
+                right_depth = abs(jointr1[i].z - jointr3[i].z)
+                left_depth = abs(jointl1[i].z - jointl3[i].z)
+                new_entry = [jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i], right_height,
+                             left_height,right_depth,left_depth]
                 if (right_height < 100.0) & (left_height < 100.0):
                     up_time_counter = up_time_counter + (time.time() - last_time)
                     if (up_time_counter>count):
                         count = self.counting_flag(count)
                         up_time_counter = up_time_counter - 0.9
+                        new_entry.append(count)
                     print (up_time_counter)
                     # last_time = time.time()
                 if (up_time_counter >= s.rep-1):
@@ -272,6 +277,7 @@ class Camera(threading.Thread):
                     s.success_exercise = True
                     break
                 last_time = time.time()
+                list_joints.append(new_entry)
         print ("finish with" + str(count))
         print(list_joints)
         Excel.wf_joints(exercise_name,list_joints)
@@ -282,79 +288,52 @@ class Camera(threading.Thread):
     def raise_arms_forward_turn(self):
         self.raise_arms_forward_static()
 
-    def raise_right_arm_forward(self):
+    def exercise_three_joints_with_height(self, exercise_name, joint_num1, joint_num2, joint_num3):
         flag = False
         counter = 0
         exercise_name = s.req_exercise
         list_joints = [[12, 13, 15]]
         while (s.req_exercise == "raise_right_arm_forward"):
             joints = self.getSkeletonData()
-            jointr1 = self.findJointData(joints, "12")
-            jointr2 = self.findJointData(joints, "13")
-            jointr3 = self.findJointData(joints, "15")
+            jointr1 = self.findJointData(joints, joint_num1)
+            jointr2 = self.findJointData(joints, joint_num2)
+            jointr3 = self.findJointData(joints, joint_num3)
             if not jointr1 or not jointr2 or not jointr3:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([jointr1[i], jointr2[i], jointr3[i]])
-                right_height = abs(jointr1[i].y - jointr3[i].y)
-                right_angle = self.calc_angle(jointr2[i], jointr1[i], jointr3[i])
-                right_depth = abs(jointr1[i].z - jointr3[i].z)
-                print (right_height)
-                print (right_angle)
-                print (right_depth)
+                height = abs(jointr1[i].y - jointr3[i].y)
+                angle = self.calc_angle(jointr2[i], jointr1[i], jointr3[i])
+                depth = abs(jointr1[i].z - jointr3[i].z)
+                new_entry = [jointr1[i], jointr2[i], jointr3[i], height, angle, depth]
+                print (height)
+                print (angle)
+                print (depth)
                 print (flag)
-                if (right_height < 80.0) &  (right_depth>300) & (not flag):
+                if (height < 80.0) & (depth > 300) & (not flag):
                     print ("up")
                     counter = self.counting_flag(counter)
                     flag = True
-                if (165 < right_angle <= 180) & (right_depth<100) & flag:
+                    new_entry.append("up")
+                if (165 < angle <= 180) & (depth<100) & flag:
                     print ("down")
                     flag = False
+                    new_entry.append("down")
                 if (counter == s.rep):
                     s.req_exercise = ""
                     s.success_exercise = True
                     break
+                list_joints.append(new_entry)
         print ("finish with" + str(counter))
         print(list_joints)
         Excel.wf_joints(exercise_name,list_joints)
         s.ex_list.append([exercise_name, counter])
         if (s.success_exercise):
             return True
+    def raise_right_arm_forward(self):
+        self.exercise_three_joints_with_height("raise_right_arm_forward", "12", "13", "15")
 
     def raise_left_arm_forward(self):
-        flag = False
-        counter = 0
-        exercise_name = s.req_exercise
-        list_joints = [[6, 7, 9]]
-        while (s.req_exercise == "raise_left_arm_forward"):
-            joints = self.getSkeletonData()
-            jointl1 = self.findJointData(joints, "6")
-            jointl2 = self.findJointData(joints, "7")
-            jointl3 = self.findJointData(joints, "9")
-            if not jointl1 or not jointl2 or not jointl3:
-                continue
-            for i in range(0, len(jointl1)):
-                list_joints.append([jointl1[i], jointl2[i], jointl3[i]])
-                left_height = abs(jointl1[i].y - jointl3[i].y)
-                left_angle = self.calc_angle(jointl2[i], jointl1[i], jointl3[i])
-                left_depth = abs(jointl1[i].z - jointl3[i].z)
-                if (left_height < 80.0) & (left_depth>300) & (not flag):
-                    print ("up")
-                    counter = self.counting_flag(counter)
-                    flag = True
-                if (170 < left_angle < 180) & (left_depth<100) & flag:
-                    print ("down")
-                    flag = False
-                if (counter == s.rep):
-                    s.req_exercise = ""
-                    s.success_exercise = True
-                    break
-        print ("finish with" + str(counter))
-        print(list_joints)
-        Excel.wf_joints(exercise_name,list_joints)
-        s.ex_list.append([exercise_name, counter])
-        if (s.success_exercise):
-            return True
+        self.exercise_three_joints_with_height("raise_right_arm_forward", "6", "7", "9")
 
     def raise_arms_forward_separate(self):
         while (s.req_exercise == "raise_arms_forward_separate"):
@@ -376,26 +355,30 @@ class Camera(threading.Thread):
             if not jointr1 or not jointr2 or not jointr3 or not jointl1 or not jointl2 or not jointl3:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i]])
                 left_height = abs(jointl1[i].y - jointl3[i].y )
                 left_angle = self.calc_angle(jointl2[i], jointl1[i], jointl3[i])
                 left_depth = abs(jointl1[i].z - jointl3[i].z)
                 right_height = abs(jointr1[i].y - jointr3[i].y)
                 right_angle = self.calc_angle(jointr2[i], jointr1[i], jointr3[i])
                 right_depth = abs(jointr1[i].z - jointr3[i].z)
+                new_entry = [jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i], right_angle,
+                             left_angle, right_height, left_height,right_depth,left_depth]
                 print (left_height)
                 print (right_height)
                 if (left_height < 70.0) & (right_height < 70.0) & (right_depth>300) & (left_depth>300) & (not flag):
                     print ("up")
                     counter = self.counting_flag(counter)
                     flag = True
+                    new_entry.append("up")
                 if (160 < left_angle < 190) & (160 < right_angle < 190) & (right_depth<80) & (left_depth<80) & (flag):
                     print ("down")
                     flag = False
+                    new_entry.append("down")
                 if (counter == s.rep):
                     s.req_exercise = ""
                     s.success_exercise = True
                     break
+                list_joints.append(new_entry)
         print ("finish with" + str(counter))
         print(list_joints)
         Excel.wf_joints(exercise_name, list_joints)
@@ -419,11 +402,13 @@ class Camera(threading.Thread):
             if not joint_torso or not jointr1 or not jointr2 or not jointr3 or not jointl1 or not jointl2 or not jointl3:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([joint_torso[i], jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i]])
                 left_armpit_angle = self.calc_angle(jointl1[i], joint_torso[i], jointl2[i])
                 left_elbow_angle = self.calc_angle(jointl2[i], jointl1[i], jointl3[i])
                 right_armpit_angle = self.calc_angle(jointr1[i], joint_torso[i], jointr2[i])
                 right_elbow_angle = self.calc_angle(jointr2[i], jointr1[i], jointr3[i])
+                new_entry =[joint_torso[i], jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i],
+                            jointl3[i], right_armpit_angle, left_armpit_angle, right_elbow_angle,
+                            left_elbow_angle]
                 print (left_armpit_angle)
                 print (left_elbow_angle)
                 print (right_armpit_angle)
@@ -432,14 +417,17 @@ class Camera(threading.Thread):
                     print("close")
                     counter = self.counting_flag(counter)
                     flag = True
+                    new_entry.append("close")
                 if ((90<left_armpit_angle<120 and 90<right_armpit_angle<120) and (140<left_elbow_angle<180 and 140<right_elbow_angle<180) and (flag)):
                     print("open")
                     flag = False
+                    new_entry.append("open")
                     print (counter)
                 if (counter == s.rep):
                     s.req_exercise = ""
                     s.success_exercise = True
                     break
+                list_joints.append(new_entry)
         print ("finish with" + str(counter))
         print(list_joints)
         Excel.wf_joints("raise_arms_bend_elbows", list_joints)
@@ -462,9 +450,9 @@ class Camera(threading.Thread):
             if not joint_torso or not jointr1 or not jointr2 or not jointl1 or not jointl2:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([joint_torso[i], jointr1[i], jointr2[i], jointl1[i], jointl2[i]])
                 right_angle = self.calc_angle(jointr1[i], joint_torso[i], jointr2[i])
                 left_angle = self.calc_angle(jointl1[i], joint_torso[i], jointl2[i])
+                new_entry = [joint_torso[i], jointr1[i], jointr2[i], jointl1[i], jointl2[i], right_angle, left_angle]
                 print (right_angle)
                 print (left_angle)
                 if (90 < right_angle < 120) and (90 < left_angle < 120):
@@ -472,12 +460,14 @@ class Camera(threading.Thread):
                     if (up_time_counter>count):
                         count = self.counting_flag(count)
                         up_time_counter = up_time_counter - 1
+                        new_entry.append("count")
                     print (up_time_counter)
                     last_time = time.time()
                 if (up_time_counter >= s.rep):
                     s.req_exercise = ""
                     s.success_exercise = True
                     break
+                list_joints.append(new_entry)
         print ("finish with" + str(count))
         print(list_joints)
         Excel.wf_joints("raise_arms_bend_elbows", list_joints)
@@ -501,7 +491,6 @@ class Camera(threading.Thread):
             if not joint_torso or not jointr1 or not jointr2 or not jointr3 or not jointl1 or not jointl2 or not jointl3:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([joint_torso[i], jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i]])
                 left_armpit_angle = self.calc_angle(jointl1[i], joint_torso[i], jointl2[i])
                 left_elbow_angle = self.calc_angle(jointl2[i], jointl1[i], jointl3[i])
                 right_armpit_angle = self.calc_angle(jointr1[i], joint_torso[i], jointr2[i])
