@@ -37,7 +37,6 @@ class Poppy(threading.Thread):
         # self.run_workout(chosen_exercises, cog_screen_name) #Running function
         self.test_for_exercise() #Testing function
 
-
     def choose_exercises_and_game(self):
         # all existing exercises
         exercise_names = [self.raise_arms_forward, self.raise_arms_forward_static,
@@ -96,12 +95,13 @@ class Poppy(threading.Thread):
     def test_for_exercise(self):
     # For testing exercises separtly, not as part of the workout
 
-        self.run_exercise(self.raise_arms_horizontally, "raise arms horizontally")
+        # self.run_exercise(self.raise_arms_horizontally, "raise arms horizontally")
+        # self.run_exercise(self.raise_arms_horizontally_separate, "")
         # self.run_exercise(self.bend_elbows, "bend elbows")
         # self.run_exercise(self.raise_arms_forward_separate, "")
-        # self.run_exercise(self.raise_arms_forward, "raise arms forward")
+        self.run_exercise(self.raise_arms_forward, "raise arms forward")
+        self.run_exercise(self.raise_arms_forward, "raise arms forward")
         # self.run_exercise(self.raise_arms_forward_static, "raise arms forward static")
-        # self.run_exercise(self.raise_arms_horizontally_separate, "")
         # self.run_exercise(self.raise_arms_forward_turn, "raise arms forward turn hands")
         # self.run_exercise(self.raise_arms_bend_elbows, "raise arms bend elbows")
         # self.run_exercise(self.raise_arms_horiz_turn, "raise arms horizontally turn hands")

@@ -157,7 +157,7 @@ class Camera(threading.Thread):
                 continue
             for i in range(0, len(joint1)):
                 angle = self.calc_angle(joint2[i], joint3[i], joint1[i])
-                new_entry = ([joint1[i], joint2[i], joint3[i]], angle)
+                new_entry = [joint1[i], joint2[i], joint3[i], angle]
                 print (angle)
                 if ((up_lb<angle<up_ub) & (not flag)):
                     print("up")
@@ -229,16 +229,16 @@ class Camera(threading.Thread):
             continue
 
     def raise_right_arm_horiz(self):
-        self.exercise_three_joints("raise_right_arm_horiz", "3", "12", "13",  90, 120, 30, 45)
+        self.exercise_three_joints("raise_right_arm_horiz", "3", "12", "15",  90, 120, 30, 45)
 
     def raise_left_arm_horiz(self):
-        self.exercise_three_joints("raise_left_arm_horiz", "3", "6", "7", 90, 120, 30, 45)
+        self.exercise_three_joints("raise_left_arm_horiz", "3", "6", "9", 90, 120, 30, 45)
 
     def raise_arms_horizontally(self):
-        self.exercise_six_joints("raise_arms_horizontally","3", "12", "13", "3", "6", "7", 90, 120, 30, 45)
+        self.exercise_six_joints("raise_arms_horizontally","3", "12", "15", "3", "6", "9", 90, 120, 30, 45)
 
     def bend_elbows(self):
-        self.exercise_six_joints("bend_elbows", "12", "13", "15", "6", "7", "9", 0, 10, 165, 180)
+        self.exercise_six_joints("bend_elbows", "12", "13", "15", "6", "7", "9", 2, 10, 165, 180)
 
     def raise_arms_forward_static(self):
         up_time_counter = 0
@@ -288,12 +288,13 @@ class Camera(threading.Thread):
     def raise_arms_forward_turn(self):
         self.raise_arms_forward_static()
 
-    def exercise_three_joints_with_height(self, exercise_name, joint_num1, joint_num2, joint_num3):
+    def exercise_three_joints_with_height(self, exercise_name, joint_num1, joint_num2, joint_num3,
+                            up_height_ub, up_depth_lb, down_depth_ub, down_angle_lb, down_angle_ub):
         flag = False
         counter = 0
         exercise_name = s.req_exercise
         list_joints = [[12, 13, 15]]
-        while (s.req_exercise == "raise_right_arm_forward"):
+        while (s.req_exercise == exercise_name):
             joints = self.getSkeletonData()
             jointr1 = self.findJointData(joints, joint_num1)
             jointr2 = self.findJointData(joints, joint_num2)
@@ -309,12 +310,12 @@ class Camera(threading.Thread):
                 print (angle)
                 print (depth)
                 print (flag)
-                if (height < 80.0) & (depth > 300) & (not flag):
+                if (height < up_height_ub) & (depth > up_depth_lb) & (not flag):
                     print ("up")
                     counter = self.counting_flag(counter)
                     flag = True
                     new_entry.append("up")
-                if (165 < angle <= 180) & (depth<100) & flag:
+                if (down_angle_lb < angle < down_angle_ub) & (depth < down_depth_ub) & flag:
                     print ("down")
                     flag = False
                     new_entry.append("down")
@@ -329,11 +330,12 @@ class Camera(threading.Thread):
         s.ex_list.append([exercise_name, counter])
         if (s.success_exercise):
             return True
+
     def raise_right_arm_forward(self):
-        self.exercise_three_joints_with_height("raise_right_arm_forward", "12", "13", "15")
+        self.exercise_three_joints_with_height("raise_right_arm_forward", "12", "13", "15", 45, 300, 80, 160, 190)
 
     def raise_left_arm_forward(self):
-        self.exercise_three_joints_with_height("raise_right_arm_forward", "6", "7", "9")
+        self.exercise_three_joints_with_height("raise_left_arm_forward", "6", "7", "9", 45, 300, 80, 160, 190)
 
     def raise_arms_forward_separate(self):
         while (s.req_exercise == "raise_arms_forward_separate"):
@@ -365,7 +367,7 @@ class Camera(threading.Thread):
                              left_angle, right_height, left_height,right_depth,left_depth]
                 print (left_height)
                 print (right_height)
-                if (left_height < 70.0) & (right_height < 70.0) & (right_depth>300) & (left_depth>300) & (not flag):
+                if (left_height < 45.0) & (right_height < 45.0) & (right_depth > 400) & (left_depth > 400) & (not flag):
                     print ("up")
                     counter = self.counting_flag(counter)
                     flag = True
