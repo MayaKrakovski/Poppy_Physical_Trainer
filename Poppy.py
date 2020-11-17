@@ -95,16 +95,17 @@ class Poppy(threading.Thread):
     def test_for_exercise(self):
     # For testing exercises separtly, not as part of the workout
 
-        # self.run_exercise(self.raise_arms_horizontally, "raise arms horizontally")
-        # self.run_exercise(self.raise_arms_horizontally_separate, "")
-        # self.run_exercise(self.bend_elbows, "bend elbows")
-        # self.run_exercise(self.raise_arms_forward_separate, "")
+        self.run_exercise(self.raise_arms_horizontally, "raise arms horizontally")
+        self.run_exercise(self.raise_arms_horizontally_separate, "")
+        self.run_exercise(self.raise_arms_horiz_turn, "raise arms horizontally turn hands")
+        self.run_exercise(self.bend_elbows, "bend elbows")
+        self.run_exercise(self.raise_arms_forward_separate, "")
         self.run_exercise(self.raise_arms_forward, "raise arms forward")
-        self.run_exercise(self.raise_arms_forward, "raise arms forward")
-        # self.run_exercise(self.raise_arms_forward_static, "raise arms forward static")
-        # self.run_exercise(self.raise_arms_forward_turn, "raise arms forward turn hands")
-        # self.run_exercise(self.raise_arms_bend_elbows, "raise arms bend elbows")
-        # self.run_exercise(self.raise_arms_horiz_turn, "raise arms horizontally turn hands")
+        self.run_exercise(self.raise_arms_forward_static, "raise arms forward static")
+        self.run_exercise(self.raise_arms_forward_turn, "raise arms forward turn hands")
+
+        self.run_exercise(self.raise_arms_bend_elbows, "raise arms bend elbows")
+
         # self.run_exercise(self.open_arms_and_move_forward, "open arms and move forward")
         # self.run_exercise(self.open_and_close_arms_90, "open and close arms 90")
         # self.run_exercise(self.raise_arms_90_and_up, "raise arms 90 and up")
@@ -134,7 +135,7 @@ class Poppy(threading.Thread):
         s.str_to_say = exercise_name
         time.sleep(5)
         exercise()
-        if (exercise_name!="hello"):
+        if exercise_name != "hello":
             self.init_robot()
             s.req_exercise = ""
 
@@ -269,7 +270,7 @@ class Poppy(threading.Thread):
         self.poppy.l_arm_z.goto_position(-90, 1.5, wait=False)
         self.poppy.r_arm_z.goto_position(90, 1.5, wait=False)
         time.sleep(s.rep)
-        time.sleep(7)
+        time.sleep(8)
         self.poppy.l_arm_z.goto_position(0, 1.5, wait=False)
         self.poppy.r_arm_z.goto_position(0, 1.5, wait=False)
         self.poppy.l_shoulder_y.goto_position(0, 1.5, wait=False)
