@@ -228,13 +228,13 @@ class Camera(threading.Thread):
             continue
 
     def raise_right_arm_horiz(self):
-        self.exercise_three_joints("raise_right_arm_horiz", "3", "12", "15",  90, 120, 30, 45)
+        self.exercise_three_joints("raise_right_arm_horiz", "3", "12", "15",  90, 120, 30, 50)
 
     def raise_left_arm_horiz(self):
-        self.exercise_three_joints("raise_left_arm_horiz", "3", "6", "9", 90, 120, 30, 45)
+        self.exercise_three_joints("raise_left_arm_horiz", "3", "6", "9", 90, 120, 30, 50)
 
     def raise_arms_horizontally(self):
-        self.exercise_six_joints("raise_arms_horizontally","3", "12", "15", "3", "6", "9", 90, 120, 30, 45)
+        self.exercise_six_joints("raise_arms_horizontally","3", "12", "15", "3", "6", "9", 90, 120, 30, 50)
 
     def raise_arms_horiz_turn(self):
         up_time_counter = 0
@@ -256,7 +256,7 @@ class Camera(threading.Thread):
                 new_entry = [joint_torso[i], jointr1[i], jointr2[i], jointl1[i], jointl2[i], right_angle, left_angle]
                 print (right_angle)
                 print (left_angle)
-                if (90 < right_angle < 120) and (90 < left_angle < 120):
+                if (90 < right_angle < 130) and (90 < left_angle < 130):
                     up_time_counter = up_time_counter + (time.time() - last_time)
                     if (up_time_counter>count):
                         count = self.counting_flag(count)
@@ -433,16 +433,16 @@ class Camera(threading.Thread):
     def raise_arms_forward_turn(self):
         self.raise_arms_forward_static()
 
-    def exercise_seven_joints_two_angles(self, exercise_name, joint_torso, joint_r1, joint_r2, joint_r3, joint_l1,
+    def exercise_seven_joints_two_angles(self, exercise_name, joint_torso_num, joint_r1, joint_r2, joint_r3, joint_l1,
                                          joint_l2, joint_l3,
                                          up_angle1_lb, up_angle1_ub, down_angle1_lb, down_angle1_ub,
                                          up_angle2_lb, up_angle2_ub, down_angle2_lb, down_angle2_ub):
         flag = False
         counter = 0
-        list_joints = [[joint_torso, joint_r1, joint_r2, joint_r3, joint_l1, joint_l2, joint_l3]]
+        list_joints = [[joint_torso_num, joint_r1, joint_r2, joint_r3, joint_l1, joint_l2, joint_l3]]
         while (s.req_exercise == exercise_name):
             joints = self.getSkeletonData()
-            joint_torso = self.findJointData(joints, joint_torso)
+            joint_torso = self.findJointData(joints, joint_torso_num)
             jointr1 = self.findJointData(joints, joint_r1)
             jointr2 = self.findJointData(joints, joint_r2)
             jointr3 = self.findJointData(joints, joint_r3)
@@ -496,16 +496,16 @@ class Camera(threading.Thread):
                                               90, 120, 90, 120, 0, 20, 140, 180)
     def raise_arms_90_and_up(self):
         self.exercise_seven_joints_two_angles("raise_arms_90_and_up", "3", "12", "13", "15", "6", "7", "9",
-                                              130, 180, 95, 125, 100, 145, 70, 95)
+                                              120, 180, 90, 130, 80, 120, 60, 100)
 
     def open_hands_and_raise_up(self):
         self.exercise_six_joints("open_hands_and_raise_up", "3", "12", "13", "3", "6", "7", 160, 180, 100, 120)
 
-    def open_arms_and_move_forward(self):
+    def open_arms_and_forward(self):
         flag = False
         counter = 0
         list_joints = [[3, 12, 13, 15, 6, 7, 9]]
-        while s.req_exercise == "open_arms_and_move_forward":
+        while s.req_exercise == "open_arms_and_forward":
             joints = self.getSkeletonData()
             joint_torso = self.findJointData(joints, "3")
             jointr1 = self.findJointData(joints, "12")
@@ -518,26 +518,26 @@ class Camera(threading.Thread):
                     not jointl3:
                 continue
             for i in range(0, len(jointr1)):
-                left_height = abs(jointl1[i].y - jointl3[i].y )
+                left_height = abs(jointl1[i].y - jointl3[i].y)
                 left_angle = self.calc_angle(jointl1[i], joint_torso[i], jointl2[i])
                 left_depth = abs(jointl1[i].z-jointl3[i].z)
                 right_height = abs(jointr1[i].y - jointr3[i].y)
                 right_angle = self.calc_angle(jointr1[i], joint_torso[i], jointr2[i])
                 right_depth = abs(jointr1[i].z - jointr3[i].z)
-                new_entry = [joint_torso, jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i],
-                             right_height,left_height,right_angle,left_angle,right_depth,left_depth]
+                new_entry = [joint_torso[i], jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i],
+                             right_height, left_height, right_angle, left_angle, right_depth, left_depth]
                 print (left_depth)
                 print (right_depth)
                 print (left_height)
                 print (left_angle)
                 print (right_height)
                 print (right_angle)
-                if (left_height < 70.0) & (right_height < 70.0) & (right_depth>300) & (left_depth>300) & (not flag):
+                if (left_height < 45) & (right_height < 45) & (right_depth>400) & (left_depth>400) & (not flag):
                     print ("close")
                     counter = self.counting_flag(counter)
                     new_entry.append("close")
                     flag = True
-                if (90 < left_angle < 120) & (90 < right_angle < 120) & (right_depth<70) & (left_depth<70) & flag:
+                if (90 < left_angle < 120) & (90 < right_angle < 120) & (right_depth < 70) & (left_depth < 70) & flag:
                     print ("open")
                     new_entry.append("open")
                     flag = False
@@ -547,8 +547,8 @@ class Camera(threading.Thread):
                     break
                 list_joints.append(new_entry)
         print ("finish with" + str(counter))
-        Excel.wf_joints("open_arms_and_move_forward", list_joints)
-        s.ex_list.append(["open_arms_and_move_forward", counter])
+        Excel.wf_joints("open_arms_and_forward", list_joints)
+        s.ex_list.append(["open_arms_and_forward", counter])
         if (s.success_exercise):
             return True
 
@@ -568,7 +568,6 @@ class Camera(threading.Thread):
             if not joint_torso or not jointr1 or not jointr2 or not jointr3 or not jointl1 or not jointl2 or not jointl3:
                 continue
             for i in range(0, len(jointr1)):
-                list_joints.append([joint_torso[i], jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i]])
                 left_armpit_angle = self.calc_angle(jointl1[i], joint_torso[i], jointl2[i])
                 left_elbow_angle = self.calc_angle(jointl2[i], jointl1[i], jointl3[i])
                 right_armpit_angle = self.calc_angle(jointr1[i], joint_torso[i], jointr2[i])
@@ -577,9 +576,9 @@ class Camera(threading.Thread):
                 left_depth = abs(jointl1[i].z - jointl2[i].z)
                 right_height = abs(jointr1[i].y - jointr2[i].y)
                 right_depth = abs(jointr1[i].z - jointr2[i].z)
-                new_entry = [joint_torso, jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i],
+                new_entry = [joint_torso[i], jointr1[i], jointr2[i], jointr3[i],jointl1[i], jointl2[i], jointl3[i],
                              right_armpit_angle, left_armpit_angle,right_elbow_angle, left_elbow_angle,
-                             right_height,left_height, right_depth, left_depth]
+                             right_height, left_height, right_depth, left_depth]
                 print (left_armpit_angle)
                 print (left_elbow_angle)
                 print (right_armpit_angle)
@@ -588,13 +587,14 @@ class Camera(threading.Thread):
                 print (left_depth)
                 print (right_height)
                 print (right_depth)
-                if (left_height <70) & (right_height <70) & (right_depth>200) & (left_depth>200) & (not flag):
+                if (left_height < 100) & (right_height < 100) & (right_depth>180) & (left_depth>180) & (not flag):
                     print("close")
                     counter = self.counting_flag(counter)
                     new_entry.append("close")
                     flag = True
-                if ((90 < left_armpit_angle < 130 and 90 < right_armpit_angle < 130) and (
-                        60 < left_elbow_angle < 110 and 60 < right_elbow_angle <110) and (right_depth<70) and (left_depth<70) and (flag)):
+                if ((90 < left_armpit_angle < 130 and 90 < right_armpit_angle < 130) and
+                        (60 < left_elbow_angle < 100 and 60 < right_elbow_angle <100) and
+                        (right_depth<40) and (left_depth<40) and (flag)):
                     print("open")
                     new_entry.append("open")
                     flag = False
@@ -704,7 +704,7 @@ class Camera(threading.Thread):
 
 #for tests
 if __name__ == '__main__':
-    s.rep = 8
+    s.rep = 2
     language = 'Hebrew'
     gender = 'Male'
     s.audio_path = 'audio files/' + language + '/' + gender + '/'
@@ -712,7 +712,7 @@ if __name__ == '__main__':
     s.waved = False
     s.finish_workout = False
     s.success_exercise = False
-    s.req_exercise = "raise_right_arm_horiz"
+    s.req_exercise = "open_arms_and_forward"
     Excel.create_workbook()
     s.camera = Camera()
     s.camera.start()

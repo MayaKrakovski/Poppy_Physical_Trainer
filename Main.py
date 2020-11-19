@@ -13,7 +13,7 @@ import Excel as excel
 if __name__ == '__main__':
     # Settings for exercises
     language = 'Hebrew'
-    gender = 'Female'
+    gender = 'Male'
     s.with_cog = True # Depnding on experiment scenario
     s.audio_path = 'audio files/' + language + '/' + gender + '/'
 
