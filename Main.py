@@ -14,14 +14,14 @@ if __name__ == '__main__':
     # Settings for exercises
     language = 'Hebrew'
     gender = 'Male'
-    s.with_cog = True # Depnding on experiment scenario
+    s.with_cog = False # Depnding on experiment scenario
     s.audio_path = 'audio files/' + language + '/' + gender + '/'
 
     s.exercies_amount = 6
 
     s.waved = False
     s.finish_workout = False
-    s.rep = 8 # Number of repetitions for exercises
+    s.rep = 8  # Number of repetitions for exercises
     s.req_exercise = ""
     s.str_to_say = ""
     s.clickedTryAgain = False

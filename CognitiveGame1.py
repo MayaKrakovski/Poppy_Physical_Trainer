@@ -42,6 +42,8 @@ class GameOneStart(tk.Frame):
         button2.pack()
         button2.place(height=200, width=200, x=400, y=400)
 
+        s.words_number = 4
+
     def on_click(self, master):
         self.background_label.destroy()
         s.screen.switch_frame(GamePageOne)
@@ -55,7 +57,7 @@ class GamePageOne(tk.Frame):
         self.background_label = tk.Label(image=self.photo_image1)
         self.background_label.pack()
 
-        s.words_number = 4
+
         s.choosen_words = []
         s.words_order = []
         corx = 750
@@ -73,7 +75,7 @@ class GamePageOne(tk.Frame):
             label.pack()
             label.place(height=120, width=150, x=corx, y=cory)
             corx = corx - 200
-            if corx == -150:
+            if corx < 150:
                 cory = cory + 150
                 corx = 750
             self.labels.append(label)
@@ -131,13 +133,14 @@ class GamePageTwo(tk.Frame):
             label.place(height=120, width=150, x=corx, y=cory)
 
             corx = corx - 200
-            if corx == -150:
+            if corx < 150:
                 cory = cory + 150
                 corx = 750
             self.labels.append(label)
 
     def changeColor2(self, number):
         self.labels[number].configure(bg="#F3FCFB")
+
     def on_click(self, but2,button_number):
         print (button_number)
 
@@ -152,22 +155,22 @@ class GamePageTwo(tk.Frame):
                 self.finishGamePage(True)
         else:
             self.labels[but2].configure(bg="red")
+            s.str_to_say = "bad"
             self.after(1500, self.changeColor2, but2)
-            s.str_to_say = ""
             self.update()
-            time.sleep(1.5)
             print ("bad")
             self.finishGamePage(False)
 
     def finishGamePage(self, success):
         if (success):
             s.screen.switch_frame(SuccessPage)
+            s.words_number += 1
             print ("success")
         else:
             s.screen.switch_frame(WorngPage)
+            s.words_number -= 1
             print("didn't succeed")
         s.ex_list.append(["cog_game1", success])
-        s.cogGame = False
 
 class SuccessPage(tk.Frame):
     def __init__(self, master):
@@ -175,6 +178,14 @@ class SuccessPage(tk.Frame):
         image = Image.open('Pictures//success.jpg')
         self.photo_image = ImageTk.PhotoImage(image)
         tk.Label(self, image=self.photo_image).pack()
+        self.after(3000, self.last)
+
+    def last(self):
+        if s.cogGameCount >= 3:
+            s.cogGame = False
+        else:
+            s.screen.switch_frame(GamePageOne)
+
 
 class WorngPage(tk.Frame):
     def __init__(self, master):
@@ -182,6 +193,14 @@ class WorngPage(tk.Frame):
         image = Image.open('Pictures//worng.jpg')
         self.photo_image = ImageTk.PhotoImage(image)
         tk.Label(self, image=self.photo_image).pack()
+        self.after(3000, self.last)
+
+    def last(self):
+        if s.cogGameCount >= 3:
+            s.cogGame = False
+        else:
+            s.screen.switch_frame(GamePageOne)
+
 
 class HelloPage(tk.Frame):
     def __init__(self, master):
@@ -208,6 +227,7 @@ if __name__ == "__main__":
     words_number = 4
     choosen_words = []
     words_order = []
+    s.ex_list = []
     s.cogGameCount = 0
     s.finish_workout = False
     s.camera = Camera()
